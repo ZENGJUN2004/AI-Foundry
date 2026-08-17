@@ -1,0 +1,86 @@
+# —— Byte-compiled / optimized ——
+__pycache__/
+*.py[cod]
+*$py.class
+
+# —— Distribution / packaging ——
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-wheel-metadata/
+share/python-wheels/
+
+# —— Virtual environments ——
+.venv/
+venv/
+env/
+ENV/
+
+# —— Test / coverage / linting ——
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+.ruff_cache/
+
+# —— Editor / IDE ——
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# —— OS ——
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# —— Environment variables / secrets ——
+.env
+.env.local
+.env.*.local
+*.pem
+
+# —— AI Foundry 本地运行产物（报告、日志、临时输出） ——
+outputs/
+*.report.md
+*.report.json
+*.report.txt
+# 临时日志 / 管道重定向文本（本地调试生成）
+_install*.log
+_uninstall*.log
+_h*.txt
+*.tmp.log
+*.tmp.txt
+
+# —— Trae / WorkBuddy / Claude 本地工作文件 ——
+.trae/
+.trae-cn/
+.claude/

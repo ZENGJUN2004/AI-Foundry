@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+# 说明：纯源码目录结构，无需 wheel 构建即可 editable install。
+# setuptools 64+ 自动扫描 ai_foundry 包。
+
+[project]
+name = "ai-foundry"
+version = "0.9.0"
+description = "AI Foundry v0.9 — Software Component Decision Engine. Autonomous Open Source Intelligence layer: A(Req)→B(Scout)→C(Registry+Score+Risk)→D(Assembly)."
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "AI Foundry Team" },
+]
+keywords = [
+    "ai-foundry",
+    "open-source-intelligence",
+    "component-scoring",
+    "software-supply-chain",
+    "github-search",
+    "decision-engine",
+    "cli",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    #  zero third-party dependencies — pure Python standard library
+]
+
+[project.urls]
+Homepage       = "https://github.com/ZENGJUN2004/AI-Foundry"
+Source         = "https://github.com/ZENGJUN2004/AI-Foundry"
+"Bug Reports"  = "https://github.com/ZENGJUN2004/AI-Foundry/issues"
+Discussions    = "https://github.com/ZENGJUN2004/AI-Foundry/discussions"
+
+[project.scripts]
+# Core: `ai-foundry` command appears directly in PATH after `pip install`
+ai-foundry = "ai_foundry.cli:main"
+
+[project.optional-dependencies]
+# Future slots for LLM-requirement-parsing / auto-build / deploy monitoring.
+#   pip install -e ".[dev,online]"
+dev     = ["pytest>=8", "ruff>=0.5"]
+online  = ["PyGithub>=2.3"]
+
+[tool.setuptools.packages.find]
+include = ["ai_foundry*"]
+exclude = ["tests*", "outputs*", "__pycache__*"]
+
+[tool.setuptools.package-data]
+"ai_foundry" = []
