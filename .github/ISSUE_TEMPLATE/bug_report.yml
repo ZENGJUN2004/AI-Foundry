@@ -1,0 +1,85 @@
+---
+name: 🐛 Bug Report
+about: Report something that doesn't work as expected
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for filing a bug report! To help us fix it quickly, please
+        fill in the template below. The most useful things you can give us are
+        (a) the exact command you ran, (b) the actual output (or screenshot /
+        paste of stderr), and (c) the `ai-foundry --version` output.
+
+        Rule of thumb: if we can reproduce your bug in 3 commands using your
+        report, it will be fixed in under 48 hours. If we can't reproduce it,
+        we'll ask — and that delays the fix.
+
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered.
+      options:
+        - label: I have searched the existing issues and discussions
+          required: true
+
+  - type: textarea
+    id: commands
+    attributes:
+      label: Steps to reproduce — exact commands
+      description: Copy-paste the exact commands you ran, from a clean shell.
+      placeholder: |
+        cd /tmp
+        git clone https://github.com/ZENGJUN2004/AI-Foundry.git
+        cd AI-Foundry
+        python -m ai_foundry --version
+        python -m ai_foundry run "your query here" --offline
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior — what did you see?
+      description: Paste the full output / traceback. Screenshots are OK, text is always better.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior — what should have happened?
+      description: If you're not sure what the correct output is, that's fine — tell us what you expected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Paste the output of these three commands.
+      value: |
+        ```
+        python --version
+        ai-foundry --version          # or: python -m ai_foundry --version
+        uname -a                      # or: on Windows, `ver`
+        ```
+      render: shell
+    validations:
+      required: true
+
+  - type: checkboxes
+    attributes:
+      label: Offline vs Online
+      options:
+        - label: This reproduces in `--offline` mode (default, no token needed)
+        - label: This reproduces in online mode only (with `GITHUB_TOKEN` set)
+        - label: I'm not sure / both
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Anything else that might help — platform weirdness, custom dataset you used, local edits you made, etc.

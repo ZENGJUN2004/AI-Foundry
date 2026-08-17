@@ -1,0 +1,90 @@
+name: Weekly AI Foundry Demo Run
+# ————————————————————————————————————————————————————————————————
+#  Automated sanity demo of AI Foundry on a weekly cadence.
+#  Produces two signals for the repo home page:
+#    1. A green "workflow success" checkmark next to latest commit.
+#    2. An Artifact (Markdown + JSON) showing real decision output
+#       that any visitor can download without cloning the repo.
+#  Also runs on every push to main (lightweight: offline mode,
+#  pure stdlib, no cache, no network after checkout).
+# ————————————————————————————————————————————————————————————————
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Every Monday at 03:17 UTC = Mon 11:17 China / Sun 20:17 Pacific
+    - cron: "17 3 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    name: "Demo run (Python ${{ matrix.python-version }})"
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: "Set up Python ${{ matrix.python-version }}"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "${{ matrix.python-version }}"
+          cache: "pip"
+
+      - name: Editable install (zero runtime deps; pure stdlib)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --no-build-isolation -e .
+
+      - name: "Health H1 / H2 — version + capabilities list"
+        run: |
+          set -euo pipefail
+          ai-foundry --version
+          mkdir -p outputs
+          ai-foundry list-caps | tee outputs/H2-caps-py${{ matrix.python-version }}.txt
+
+      - name: "Health H3 — full loop offline"
+        run: |
+          set -euo pipefail
+          ai-foundry run \
+            "ci deploy health check nlp python sentiment text analysis" \
+            --offline -f text \
+            -o outputs/H3-health-py${{ matrix.python-version }}.txt
+          grep -q "🎯 为什么选 Primary" outputs/H3-health-py${{ matrix.python-version }}.txt
+
+      - name: "Full demo — 6 scenarios → markdown + json"
+        run: |
+          set -euo pipefail
+          ai-foundry demo --offline \
+            -f markdown \
+            -o outputs/demo-py${{ matrix.python-version }}.md
+          ai-foundry demo --offline \
+            -f json \
+            -o outputs/demo-py${{ matrix.python-version }}.json
+
+      - name: "One focused HTTP-client run → case-study artifact"
+        run: |
+          set -euo pipefail
+          ai-foundry run "Python async HTTP client library httpx aiohttp requests" \
+            --offline -f markdown \
+            -o outputs/run-http-clients-py${{ matrix.python-version }}.md
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: "ai-foundry-outputs-py${{ matrix.python-version }}"
+          path: |
+            outputs/*.md
+            outputs/*.json
+            outputs/*.txt
+          retention-days: 60

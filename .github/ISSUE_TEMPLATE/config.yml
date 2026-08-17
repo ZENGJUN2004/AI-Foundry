@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Open-ended design discussion
+    about: For bigger ideas that span multiple features — start here, not in issues.
+    url: https://github.com/ZENGJUN2004/AI-Foundry/discussions/categories/ideas
+  - name: 🙏 Show & Tell
+    about: Show us what you built with AI Foundry (case studies, integrations, providers).
+    url: https://github.com/ZENGJUN2004/AI-Foundry/discussions/categories/show-tell
+  - name: ❓ Q&A
+    about: How do I do X with AI Foundry? Ask here.
+    url: https://github.com/ZENGJUN2004/AI-Foundry/discussions/categories/q-a

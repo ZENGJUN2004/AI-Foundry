@@ -1,0 +1,90 @@
+---
+name: 💡 Feature Request / Idea
+about: Suggest an idea for AI Foundry
+title: "[Feature] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to propose an enhancement. The most
+        useful feature proposals answer three questions:
+          1. What job are you trying to get done? (use case, not a solution)
+          2. What does AI Foundry currently do that falls short? (current behaviour)
+          3. What would the desired behaviour look like? (with a concrete example)
+
+  - type: checkboxes
+    attributes:
+      label: Is there an existing proposal for this?
+      options:
+        - label: I have searched existing issues and discussions
+          required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of AI Foundry does this affect?
+      multiple: true
+      options:
+        - "Layer A — Requirement Intelligence (capability categories)"
+        - "Layer B — Resource Scout (new providers, search quality)"
+        - "Layer C — Registry (scoring weights, risk taxonomy)"
+        - "Layer D — Assembly Planner (Primary selection, conflicts)"
+        - "Layer E/F/G — Build / Governance / Deploy (roadmap layers)"
+        - "CLI (new subcommands, new flags, output formats)"
+        - "Packaging / CI / documentation"
+        - "Other (please describe in context)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What job are you trying to get done?
+      description: >
+        Describe your actual use case, not the solution you have in mind.
+        Example: "I need to audit 50 internal repos' dependency choices for
+        license compliance every quarter."
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What does AI Foundry currently do that falls short?
+      description: If it doesn't exist at all yet, say "Nothing — this is net new".
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired
+    attributes:
+      label: Desired behaviour — show us the ideal command / output
+      description: >
+        Paste a concrete, copy-pasteable example. E.g.:
+        ```
+        ai-foundry audit ./requirements.txt --risk-license-only -f csv
+        ```
+      render: shell
+    validations:
+      required: true
+
+  - type: checkboxes
+    attributes:
+      label: Are you open to contributing the feature yourself?
+      description: >
+        This is NOT required to file a feature request — we love feature
+        requests even from non-contributors. But if you're open to writing
+        it with our guidance, we'll assign you a Design: issue in under 48h
+        and walk you through the architecture.
+      options:
+        - label: "Yes — I can implement this myself with some guidance"
+        - label: "No — this is a feature request from a user"
+        - label: "Maybe — I'd need to see the design first"
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Links, prior art, screenshots, data, examples from other tools — anything that helps.
