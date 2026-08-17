@@ -6,12 +6,19 @@
 </p>
 
 <p align="center">
+  <em>新大众 AI · 人人都能成为开发者</em><br>
+  <strong>Build less. Create more.</strong>
+</p>
+
+<p align="center">
   <a href="#features">Features</a> ·
   <a href="#install">Install</a> ·
   <a href="#quick-start">Quick Start</a> ·
+  <a href="#real-decision">Real Decision</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#component-intelligence-score">Component Intelligence Score</a> ·
-  <a href="#roadmap">Roadmap</a>
+  <a href="#roadmap">Roadmap</a> ·
+  <a href="#vision">Vision</a>
 </p>
 
 <p align="center">
@@ -20,12 +27,9 @@
   <img alt="Zero deps" src="https://img.shields.io/badge/Dependencies-0-0a7ea4">
   <img alt="Version" src="https://img.shields.io/badge/version-0.9.0-blueviolet">
   <img alt="Status" src="https://img.shields.io/badge/status-beta-green">
-<!--
   <img alt="GitHub stars" src="https://img.shields.io/github/stars/ZENGJUN2004/AI-Foundry?style=social">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ZENGJUN2004/AI-Foundry">
   <img alt="Repo URL" src="https://img.shields.io/badge/GitHub-ZENGJUN2004%2FAI--Foundry-181717?logo=github&logoColor=white&link=https%3A%2F%2Fgithub.com%2FZENGJUN2004%2FAI-Foundry">
-  <img alt="CI placeholder" src="https://img.shields.io/badge/CI-welcome--contrib-lightgray">
--->
 </p>
 
 ---
@@ -45,6 +49,37 @@
 pip install -e "git+https://github.com/ZENGJUN2004/AI-Foundry.git#egg=ai-foundry"
 ai-foundry run "Python async HTTP client library" --offline
 ```
+
+---
+
+<h2 id="vision">🌟 Vision — 新大众 AI</h2>
+
+> 你不需要从零开始学习如何造轮子。
+> 世界上已经有数以百万计的开源项目、模型、框架和工具。
+>
+> AI Foundry 做的事情，是替你去寻找它们、理解它们、比较它们、组合它们，并把它们变成属于你的工具。
+>
+> **你负责提出想法。AI 负责完成工程。**
+>
+> 从一句自然语言需求开始：
+> *"我想要一个能够分析文学文本的工具。"*
+>
+> AI Foundry 自动完成：
+> 需求理解 → 全球搜索 → 组件评估 → 智能组装 → 自动编程 → 测试 → 修复 → 安全治理 → 部署 → 监控。
+>
+> 你看到的，不再是一堆代码。而是一个真正可以使用的软件。
+>
+> 所以，AI Foundry 想改变的不只是软件开发方式，而是：**谁有资格创造软件。**
+>
+> 当过去只有程序员才能开发软件，而今天任何人都可以借助 AI 定义、构建和部署自己的工具时，"开发者"就不再是一个职业身份，而开始成为一种人人可以拥有的创造能力。
+>
+> 这就是：**新大众 AI · 人人都能成为开发者。人人都可以创造自己的工具。**
+>
+> **从一个想法，到一个成品。AI Foundry —— Build less. Create more.**
+
+> **📍 v0.9 status**: 实现了上述闭环的前 4 步（需求理解 → 全球搜索 → 组件评估 → 智能组装）。
+> 后 6 步（自动编程 / 测试 / 修复 / 安全治理 / 部署 / 监控）是 v1.0 Roadmap，详见 [Roadmap](#roadmap)。
+> 我们诚实地标注进度，因为技术社区的信任比虚假的"已完工"更值钱。
 
 ---
 
@@ -115,6 +150,55 @@ ai-foundry demo --offline -f markdown -o demo-report.md
 export GITHUB_TOKEN=ghp_xxx
 ai-foundry run "GO structured logging library" -f text
 ```
+
+---
+
+<h2 id="real-decision">🎬 Real Decision — what an AI Foundry run actually looks like</h2>
+
+Below is the **unedited output** of one real run. The user typed:
+
+```bash
+ai-foundry run "我需要一个做情感分析、文本分词的Python库" --offline
+```
+
+AI Foundry's Layer A recognised this as a *文本分析/NLP* capability
+requirement, Layer B pulled 7 candidate repos from the offline dataset,
+Layer C scored them on 8 dimensions, Layer D picked the Primary and
+explained — per scoring dimension — why each alternative lost.
+
+### ✅ Primary：[sloria/TextBlob](https://github.com/sloria/TextBlob)  · `Score: 81.8`
+
+> Simple, Pythonic text processing: sentiment, POS tagging, noun phrase extraction, translation.
+
+| Dimension | Score |
+|---|---:|
+| relevance | 66.9 |
+| maintenance | 86.7 |
+| code_quality | 83.0 |
+| community | 97.5 |
+| issue_health | 89.9 |
+| pr_health | 65.5 |
+| license | 100.0 |
+| dependency_health | 65.0 |
+| **total** | **81.8** |
+
+**🎯 为什么选它？**
+- ✓ 综合评分 81.8 在候选集中排名第 1。
+- ✓ License 许可协议 维度得分 100.0，表现突出。
+- ✓ Community 社区规模 维度得分 97.5，表现突出。
+- ✓ Issue Health 维度得分 89.9，表现突出。
+
+**❌ 为什么不是 [explosion/spaCy](https://github.com/explosion/spaCy)？**（Score 81.6，排名第 2）
+- × 总分比 Primary 低 0.2 分。
+- × Issue Health 维度落后 10 分。
+
+**❌ 为什么不是 [nltk/nltk](https://github.com/nltk/nltk)？**（Score 75.7，排名第 3）
+- × 总分比 Primary 低 6.1 分。
+- × Community 维度落后 24 分。
+- × Issue Health 维度落后 17 分。
+
+> **这是 AI Foundry 的核心承诺**：决策是可审计的（auditable），不是黑盒 LLM 的" vibes "。
+> 每一个 ✓ 和 × 都对应 8 维评分里的具体得分差距，可以从 JSON 报告里逐条复核。
 
 ---
 
